@@ -1,23 +1,17 @@
 # Mobius
 
-## 1. MySQL 설치
+## 1. MariaDB 설치
 
 ```bash
-sudo apt-get install mysql-server
-sudo service mysql enable
-sudo service mysql start
+sudo apt-get install software-properties-common
+sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+sudo add-apt-repository 'deb [arch=amd64,arm64,i386,ppc64el] http://ftp.cc.uoc.gr/mirrors/mariadb/repo/10.4/ubuntu xenial main'
+
+sudo apt update
+sudo apt install mariadb-server
 ```
 
-## 2. Mosquitto 설치
-
-```bash
-sudo apt-add-repository ppa:mosquitto-dev/mosquitto-ppa
-sudo atp-get install mosquitto
-sudo service mosquitto enable
-sudo service mosquitto start
-```
-
-## 3. Node.js 설치
+## 2. Node.js 설치
 
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
@@ -26,7 +20,7 @@ nvm install node
 npm -g install npm
 ```
 
-## 4. Mobius 설치
+## 3. Mobius 설치
 
 ```bash
 git clone https://github.com/IoTKETI/Mobius
@@ -34,7 +28,15 @@ cd Mobius
 npm install
 ```
 
-## 5. 데이터베이스 설정
+## 4. 데이터베이스 설정
+
+MariaDB를 사용한다면
+
+```bash
+$ vi mobius/sql_action.js
+49 -- sql = util.format('set global transaction_isolation=\'READ-UNCOMMITTED\'');
+49 ++ sql = util.format('SET GLOBAL TRANSACTION ISOLATION LEVEL READ UNCOMMITTED');
+```
 
 ```bash
 $ vi conf.json
@@ -51,7 +53,7 @@ $ mysql -uroot -p < mobius/mobiusdb.sql
 Enter password:
 ```
 
-## 6. Mobius 실행
+## 5. Mobius 실행
 
 클러스터 사용하지 않음
 
@@ -61,19 +63,11 @@ $ vi app.js
 126 ++ var use_clustering = 0;
 ```
 
-MariaDB를 사용한다면
-
-```bash
-$ vi mobius/sql_action.js
-49 -- sql = util.format('set global transaction_isolation=\'READ-UNCOMMITTED\'');
-49 ++ sql = util.format('SET GLOBAL TRANSACTION ISOLATION LEVEL READ UNCOMMITTED');
-```
-
 ```bash
 node mobius.js
 ```
 
-## 7. 테스트
+## 6. 테스트
 
 다운로드 한 JSON 파일을 '포스트 맨'에 import
 
@@ -81,11 +75,11 @@ node mobius.js
 git clone https://github.com/IoTKETI/oneM2M-API-Testing.git
 ```
 
-## 8. oneM2M 진행 순서
+## 7. oneM2M 진행 순서
 
 포스트 맨에서 아래와 같이 테스트
 
-### 8.0 CSE(Common Services Entity) 확인
+### 7.0 CSE(Common Services Entity) 확인
 
 ```text
 GET cb 조회
@@ -93,7 +87,7 @@ GET cb 조회
         http://127.0.0.1:7579/Mobius
 ```
 
-### 8.1 AE(Application Entity) 등록
+### 7.1 AE(Application Entity) 등록
 
 ```text
 POST ae 생성
@@ -109,7 +103,7 @@ POST ae 생성
     }
 ```
 
-### 8.2 컨테이너 생성
+### 7.2 컨테이너 생성
 
 ```text
 POST cnt 생성
@@ -123,7 +117,7 @@ POST cnt 생성
     }
 ```
 
-#### 8.2.2 컨테이너 인스턴스 생성
+### 7.3 컨테이너 인스턴스 생성
 
 ```text
 POST cin 생성
@@ -137,7 +131,7 @@ POST cin 생성
     }
 ```
 
-#### 8.2.3 컨테이너 인스턴스 조회
+### 7.4 컨테이너 인스턴스 조회
 
 ```text
 POST cin 조회

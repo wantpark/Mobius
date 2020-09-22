@@ -8,7 +8,7 @@ sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F2
 sudo add-apt-repository 'deb [arch=amd64,arm64,i386,ppc64el] http://ftp.cc.uoc.gr/mirrors/mariadb/repo/10.4/ubuntu xenial main'
 
 sudo apt update
-sudo apt install mariadb-server
+sudo apt install -y mariadb-server
 
 sudo mysql_secure_installation
 Enter current password for root (enter for none): enter

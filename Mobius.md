@@ -45,15 +45,15 @@ MariaDB를 사용한다면
 
 ```bash
 $ vi mobius/sql_action.js
-49 -- sql = util.format('set global transaction_isolation=\'READ-UNCOMMITTED\'');
-49 ++ sql = util.format('SET GLOBAL TRANSACTION ISOLATION LEVEL READ UNCOMMITTED');
+51 -- sql = util.format('set global transaction_isolation=\'READ-UNCOMMITTED\'');
+51 ++ sql = util.format('SET GLOBAL TRANSACTION ISOLATION LEVEL READ UNCOMMITTED');
 ```
 
 ```bash
 $ vi conf.json
 {
     "csebaseport": "7579",
-    "dbpass": "<MySQL root password>"
+    "dbpass": "<MariaDB root password>"
 }
 
 $ vi mobius/mobiusdb.sql
@@ -66,12 +66,18 @@ Enter password:
 
 ## 5. Mobius 실행
 
-클러스터 사용하지 않음
+```bash
+$ vi app.js
+52 -- global.usespid = '//keti.re.kr';
+52 ++ global.usespid = '//127.0.0.1';
+```
+
+SSL을 사용한다면
 
 ```bash
 $ vi app.js
-126 -- var use_clustering = 1;
-126 ++ var use_clustering = 0;
+52 -- global.use_secure           = 'disable';
+52 ++ global.use_secure           = 'enable';
 ```
 
 ```bash

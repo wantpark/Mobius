@@ -1,6 +1,12 @@
-.DS_Store
+# Dependency directories
+.gitignore
 node_modules/
 .idea/
 log/
 doc/
 hit.json
+cbs_cache.json
+package-lock.json
+ss_ri_cache.json
+conf.json
+Mobius ����.drawio

@@ -30,7 +30,7 @@ _this = this;
 
 function retrieve_CSEBase_http(cbname, cbhost, cbhostport, callback) {
     var ri = '/' + cbname;
-    var rqi = moment().utc().format('mmssSSS') + randomValueBase64(4);
+    var rqi = require('shortid').generate();
     var options = {
         hostname: cbhost,
         port: cbhostport,
@@ -176,7 +176,7 @@ function create_remoteCSE_http(cbname, cbhost, cbhostport, body_Obj, callback) {
         bodyString = xml.end({pretty: false, indent: '  ', newline: '\n'}).toString();
     }
 
-    var rqi = moment().utc().format('mmssSSS') + randomValueBase64(4);
+    var rqi = require('shortid').generate();
     var ri = '/' + cbname;
     var options = {
         hostname: cbhost,
@@ -212,13 +212,13 @@ function create_remoteCSE_http(cbname, cbhost, cbhostport, body_Obj, callback) {
     req.end();
 }
 
-exports.build_mn = function(ri, callback) {
+exports.build_mn = function(connection, ri, callback) {
     // check remotecse if parent cse exist
     var rspObj = {};
-    db_sql.select_lookup(ri, function (err, results_comm) {
+    db_sql.select_lookup(connection, ri, function (err, results_comm) {
         if(!err) {
             if (results_comm.length == 1) {
-                db_sql.select_cb(ri, function (err, results_cb) {
+                db_sql.select_cb(connection, ri, function (err, results_cb) {
                     if(!err) {
                         if (results_cb.length == 1) {
                             rspObj.csr = {};
@@ -411,7 +411,7 @@ function create_remoteCSE_mqtt(cseid, csebasename, body_Obj, callback) {
         bodyString = xml.end({pretty: false, indent: '  ', newline: '\n'}).toString();
     }
 
-    var rqi = moment().utc().format('mmssSSS') + randomValueBase64(4);
+    var rqi = require('shortid').generate();
     var options = {
         hostname: 'localhost',
         port: usepxymqttport,
@@ -452,7 +452,7 @@ function create_remoteCSE_mqtt(cseid, csebasename, body_Obj, callback) {
 
 
 function retrieve_CSEBase_mqtt(cseid, csebasename, callback) {
-    var rqi = moment().utc().format('mmssSSS') + randomValueBase64(4);
+    var rqi = require('shortid').generate();
     var options = {
         hostname: 'localhost',
         port: usepxymqttport,

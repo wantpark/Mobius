@@ -2594,10 +2594,10 @@ function check_csr(request, response, callback) {
 
                         console.log('csebase forwarding to ' + point.forwardcbname);
 
-                        forward_http(point.forwardcbhost, point.forwardcbport, request.url, request.method, request.headers, request.body, function (code, _res) {
+                        forward_http(point.forwardcbhost, point.forwardcbport, request.url, request.method, request.headers, request.body, function (code, res) { // _res) {
                             if (code === '200') {
-                                var res = JSON.parse(JSON.stringify(_res));
-                                _res = null;
+                                //var res = JSON.parse(JSON.stringify(_res));
+                                //_res = null;
                                 if (res.headers.hasOwnProperty('content-type')) {
                                     response.setHeader('Content-Type', res.headers['content-type']);
                                 }

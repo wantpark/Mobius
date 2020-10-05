@@ -205,7 +205,8 @@ function coap_message_handler(request, response) {
                 console.log('<----- [pxy_coap]');
                 console.log(responseBody);
 
-                var rsc = new Buffer(2);
+                //var rsc = new Buffer(2);
+                var rsc = Buffer.alloc(2);
                 rsc.writeUInt16BE(parseInt(res.headers['x-m2m-rsc'], 'hex'), 0);
                 response.setOption("265", rsc);    // X-M2M-RSC
                 //var rqi = new Buffer(2);
@@ -238,10 +239,12 @@ function coap_message_handler(request, response) {
                 console.log('<----- [pxy_coap]');
                 console.log(responseBody);
 
-                var rsc = new Buffer(2);
+                //var rsc = new Buffer(2);
+                var rsc = Buffer.alloc(2);
                 rsc.writeUInt16BE(parseInt(res.headers['x-m2m-rsc'], 'hex'), 0);
                 response.setOption("265", rsc);    // X-M2M-RSC
-                var rqi = new Buffer(2);
+                //var rqi = new Buffer(2);
+                var rqi = Buffer.alloc(2);
                 rqi.writeUInt16BE(parseInt(res.headers['x-m2m-ri'], 'hex'), 0);
                 response.setOption("257", rqi);    // X-M2M-RQI
                 if (res.headers['content-type']) {

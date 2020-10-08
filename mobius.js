@@ -22,8 +22,9 @@ try {
 }
 catch (e) {
     conf.csebaseport = "7579";
-    conf.dbpass = "dksdlfduq2";
-    fs.writeFileSync('conf.json', JSON.stringify(conf, null, 4), 'utf8');
+    //conf.dbpass = "dksdlfduq2";
+    conf.dbpass = "root";
+    //fs.writeFileSync('conf.json', JSON.stringify(conf, null, 4), 'utf8');
 }
 
 global.defaultbodytype      = 'json';
@@ -34,7 +35,8 @@ global.usecsebase           = 'Mobius';
 global.usecseid             = '/Mobius2';
 global.usecsebaseport       = conf.csebaseport;
 
-global.usedbhost            = 'localhost';
+//global.usedbhost            = 'localhost';
+global.usedbhost            = process.ENV?.DB_HOST || 'localhost';
 global.usedbpass            = conf.dbpass;
 
 

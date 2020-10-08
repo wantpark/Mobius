@@ -54,6 +54,7 @@ global.usespid = '//127.0.0.1';
 global.usesuperuser = 'Superman';
 global.useobserver = 'Sandwich';
 
+/*
 var logDirectory = __dirname + '/log';
 
 // ensure log directory exists
@@ -71,6 +72,7 @@ var accessLogStream = fileStreamRotator.getStream({
 app.use(morgan('combined', {stream: accessLogStream}));
 
 //ts_app.use(morgan('short', {stream: accessLogStream}));
+*/
 
 function del_req_resource() {
     db.getConnection(function (code, connection) {

@@ -52,8 +52,8 @@ if(sgn_mqtt_client == null) {
             clean: true,
             reconnectPeriod: 2000,
             connectTimeout: 2000,
-            key: fs.readFileSync("./server-key.pem"),
-            cert: fs.readFileSync("./server-crt.pem"),
+            key: fs.readFileSync("server-key.pem"),
+            cert: fs.readFileSync("server-crt.pem"),
             rejectUnauthorized: false
         };
         sgn_mqtt_client = mqtt.connect(connectOptions);

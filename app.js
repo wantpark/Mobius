@@ -49,11 +49,9 @@ var db_sql = require('./mobius/sql_action');
 // ������ �����մϴ�.
 var app = express();
 
-//global.usespid = '//keti.re.kr';
-global.usespid = '//127.0.0.1';
+global.usespid = '//keti.re.kr';
 global.usesuperuser = 'Superman';
 global.useobserver = 'Sandwich';
-
 /*
 var logDirectory = __dirname + '/log';
 
@@ -73,7 +71,6 @@ app.use(morgan('combined', {stream: accessLogStream}));
 
 //ts_app.use(morgan('short', {stream: accessLogStream}));
 */
-
 function del_req_resource() {
     db.getConnection(function (code, connection) {
         if (code === '200') {
@@ -2596,7 +2593,7 @@ function check_csr(request, response, callback) {
 
                         console.log('csebase forwarding to ' + point.forwardcbname);
 
-                        forward_http(point.forwardcbhost, point.forwardcbport, request.url, request.method, request.headers, request.body, function (code, res) { // _res) {
+                        forward_http(point.forwardcbhost, point.forwardcbport, request.url, request.method, request.headers, request.body, function (code, res) {
                             if (code === '200') {
                                 //var res = JSON.parse(JSON.stringify(_res));
                                 //_res = null;

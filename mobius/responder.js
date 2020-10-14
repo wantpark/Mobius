@@ -2179,10 +2179,8 @@ function request_noti_coap(nu, bodyString, bodytype, xm2mri) {
 
     var responseBody = '';
     var req = coap.request(options);
-    //req.setOption("256", new Buffer(usecseid));      // X-M2M-Origin
-    //req.setOption("257", new Buffer(xm2mri));    // X-M2M-RI
-    req.setOption("256", Buffer.from(usecseid));      // X-M2M-Origin
-    req.setOption("257", Buffer.from(xm2mri));    // X-M2M-RI
+    req.setOption("256", new Buffer(usecseid));      // X-M2M-Origin
+    req.setOption("257", new Buffer(xm2mri));    // X-M2M-RI
     req.on('response', function (res) {
         res.on('data', function () {
             responseBody += res.payload.toString();

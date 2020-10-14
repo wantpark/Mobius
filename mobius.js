@@ -22,7 +22,6 @@ try {
 }
 catch (e) {
     conf.csebaseport = "7579";
-    //conf.dbpass = "dksdlfduq2";
     conf.dbpass = "root";
     //fs.writeFileSync('conf.json', JSON.stringify(conf, null, 4), 'utf8');
 }
@@ -35,7 +34,6 @@ global.usecsebase           = 'Mobius';
 global.usecseid             = '/Mobius2';
 global.usecsebaseport       = conf.csebaseport;
 
-//global.usedbhost            = 'localhost';
 global.usedbhost            = process.env?.DB_HOST || 'localhost';
 global.usedbpass            = conf.dbpass;
 
@@ -49,17 +47,15 @@ global.use_hit_man_port     = '7594';
 
 global.usetsagentport       = '7582';
 
-//global.use_mqtt_broker      = 'localhost'; // mqttbroker for mobius
 global.use_mqtt_broker      = process.env?.MQTT_HOST || 'localhost'; // mqttbroker for mobius
 
 global.use_secure           = process.env?.SECURE || 'disable';
-//global.use_secure           = 'enable';
 global.use_mqtt_port        = '1883';
 if(use_secure === 'enable') {
     use_mqtt_port           = '8883';
 }
 
-global.useaccesscontrolpolicy = 'disable';
+global.useaccesscontrolpolicy = 'enable'; //'disable';
 
 global.wdt = require('./wdt');
 

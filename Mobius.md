@@ -34,7 +34,7 @@ sudo apt-get install mosquitto-clients
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 source ~/.bashrc
-nvm install node
+nvm install node7
 npm -g install npm
 ```
 
@@ -72,20 +72,6 @@ Enter password:
 ```
 
 ## 6. Mobius 실행
-
-```bash
-$ vi app.js
-52 -- global.usespid = '//keti.re.kr';
-52 ++ global.usespid = '//127.0.0.1';
-```
-
-SSL을 사용한다면
-
-```bash
-$ vi app.js
-52 -- global.use_secure           = 'disable';
-52 ++ global.use_secure           = 'enable';
-```
 
 ```bash
 node mobius.js

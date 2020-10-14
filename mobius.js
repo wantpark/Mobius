@@ -55,7 +55,7 @@ if(use_secure === 'enable') {
     use_mqtt_port           = '8883';
 }
 
-global.useaccesscontrolpolicy = 'enable'; //'disable';
+global.useaccesscontrolpolicy = 'disable';
 
 global.wdt = require('./wdt');
 

@@ -52,7 +52,7 @@ global.usetsagentport       = '7582';
 //global.use_mqtt_broker      = 'localhost'; // mqttbroker for mobius
 global.use_mqtt_broker      = process.env?.MQTT_HOST || 'localhost'; // mqttbroker for mobius
 
-global.use_secure           = 'disable';
+global.use_secure           = process.env?.SECURE || 'disable';
 //global.use_secure           = 'enable';
 global.use_mqtt_port        = '1883';
 if(use_secure === 'enable') {

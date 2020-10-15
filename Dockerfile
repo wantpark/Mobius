@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:7.6
 
 WORKDIR /Mobius
 

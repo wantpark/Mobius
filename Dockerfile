@@ -4,4 +4,6 @@ WORKDIR /Mobius
 
 COPY . .
 
+RUN npm install
+
 CMD ["node", "mobius.js"]

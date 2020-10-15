@@ -302,7 +302,7 @@ function check_TS(ri, callback) {
                 'Content-Type': 'application/vnd.onem2m-res+json',
                 'X-M2M-RVI': uservi
             },
-            ca: fs.readFileSync('ca-crt.pem')
+            ca: fs.readFileSync(global.ca_crt_pem)
         };
 
         req = https.request(options, function (res) {
@@ -371,7 +371,7 @@ function delete_TS(callback) {
                 'X-M2M-Origin': usecseid,
                 'X-M2M-RVI': uservi
             },
-            ca: fs.readFileSync('ca-crt.pem')
+            ca: fs.readFileSync(global.ca_crt_pem)
         };
 
         req = https.request(options, function (res) {
@@ -2378,7 +2378,7 @@ function request_update_cnt(bodyString, cs) {
         });
     }
     else {
-        options.ca = fs.readFileSync('ca-crt.pem');
+        options.ca = fs.readFileSync(global.ca_crt_pem);
 
         req = https.request(options, function (res) {
             res.setEncoding('utf8');

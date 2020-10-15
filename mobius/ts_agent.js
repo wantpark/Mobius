@@ -45,9 +45,9 @@ if(use_secure == 'disable') {
 }
 else {
     var options = {
-        key: fs.readFileSync('server-key.pem'),
-        cert: fs.readFileSync('server-crt.pem'),
-        ca: fs.readFileSync('ca-crt.pem')
+        key: fs.readFileSync(global.server_key_pem),
+        cert: fs.readFileSync(global.server_crt_pem),
+        ca: fs.readFileSync(global.ca_crt_pem)
     };
     https.globalAgent.maxSockets = 1000000;
     https.createServer(options, ts_app).listen({port: usetsagentport, agent: false}, function () {
@@ -98,7 +98,7 @@ function init_TS(callback) {
         });
     }
     else {
-        options.ca = fs.readFileSync('ca-crt.pem');
+        options.ca = fs.readFileSync(global.ca_crt_pem);
 
         req = https.request(options, function (res) {
             res.setEncoding('utf8');
@@ -156,7 +156,7 @@ function search_TS(request, response, callback) {
         });
     }
     else {
-        options.ca = fs.readFileSync('ca-crt.pem');
+        options.ca = fs.readFileSync(global.ca_crt_pem);
 
         req = https.request(options, function (res) {
             res.setEncoding('utf8');

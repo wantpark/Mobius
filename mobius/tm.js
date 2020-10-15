@@ -211,7 +211,7 @@ exports.request_lock = function(obj, retry_count, callback) {
                 });
             }
             else {
-                options.ca = fs.readFileSync('ca-crt.pem');
+                options.ca = fs.readFileSync(global.ca_crt_pem);
 
                 req = https.request(options, function (res) {
                     res.on('data', function (chunk) {
@@ -382,7 +382,7 @@ function request_tctl(obj, retry_count, tctl, callback) {
                 });
             }
             else {
-                options.ca = fs.readFileSync('ca-crt.pem');
+                options.ca = fs.readFileSync(global.ca_crt_pem);
 
                 req = https.request(options, function (res) {
                     res.on('data', function (chunk) {

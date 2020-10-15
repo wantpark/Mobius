@@ -226,7 +226,7 @@ function coap_message_handler(request, response) {
         });
     }
     else if(use_secure === 'enable') {
-        options.ca = fs.readFileSync('ca-crt.pem');
+        options.ca = fs.readFileSync(global.ca_crt_pem);
 
         req = https.request(options, function (res) {
             res.setEncoding('utf8');

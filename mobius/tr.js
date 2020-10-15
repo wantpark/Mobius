@@ -175,7 +175,7 @@ exports.request_execute = function(obj, callback) {
         });
     }
     else {
-        options.ca = fs.readFileSync('ca-crt.pem');
+        options.ca = fs.readFileSync(global.ca_crt_pem);
 
         req = https.request(options, function (res) {
             res.on('data', function (chunk) {
@@ -353,7 +353,7 @@ exports.request_commit = function(obj, callback) {
         });
     }
     else {
-        options.ca = fs.readFileSync('ca-crt.pem');
+        options.ca = fs.readFileSync(global.ca_crt_pem);
 
         req = https.request(options, function (res) {
             res.on('data', function (chunk) {

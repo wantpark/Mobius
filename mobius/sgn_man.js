@@ -52,8 +52,8 @@ if(sgn_mqtt_client == null) {
             clean: true,
             reconnectPeriod: 2000,
             connectTimeout: 2000,
-            key: fs.readFileSync("server-key.pem"),
-            cert: fs.readFileSync("server-crt.pem"),
+            key: fs.readFileSync(global.server_key_pem),
+            cert: fs.readFileSync(global.server_crt_pem),
             rejectUnauthorized: false
         };
         sgn_mqtt_client = mqtt.connect(connectOptions);
@@ -206,7 +206,7 @@ function request_noti_http(nu, ri, bodyString, bodytype, xm2mri) {
         });
     }
     else {
-        options.ca = fs.readFileSync('ca-crt.pem');
+        options.ca = fs.readFileSync(global.ca_crt_pem);
 
         req = https.request(options, function (res) {
             response_noti_http(res);

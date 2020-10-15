@@ -65,9 +65,9 @@ exports.ws_watchdog = function() {
         }
         else {
             var options = {
-                key: fs.readFileSync('server-key.pem'),
-                cert: fs.readFileSync('server-crt.pem'),
-                ca: fs.readFileSync('ca-crt.pem')
+                key: fs.readFileSync(global.server_key_pem),
+                cert: fs.readFileSync(global.server_crt_pem),
+                ca: fs.readFileSync(global.ca_crt_pem)
             };
             https.globalAgent.maxSockets = 1000000;
             _server = https.createServer(options, ws_app);
@@ -326,7 +326,7 @@ function ws_binding(op, to, fr, rqi, ty, pc, bodytype, callback) {
         });
     }
     else {
-        options.ca = fs.readFileSync('ca-crt.pem');
+        options.ca = fs.readFileSync(global.ca_crt_pem);
 
         req = https.request(options, function (res) {
             res.setEncoding('utf8');
@@ -449,7 +449,7 @@ function http_retrieve_CSEBase(callback) {
                 'X-M2M-Origin': usecseid,
                 'X-M2M-RVI': uservi
             },
-            ca: fs.readFileSync('ca-crt.pem')
+            ca: fs.readFileSync(global.ca_crt_pem)
         };
 
         req = https.request(options, function (res) {

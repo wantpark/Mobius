@@ -474,7 +474,7 @@ function request_noti(nu, ri, bodyString, bodytype, xm2mri, exc) {
         });
     }
     else {
-        options.ca = fs.readFileSync('ca-crt.pem');
+        options.ca = fs.readFileSync(global.ca_crt_pem);
 
         req = https.request(options, function (res) {
             res.setEncoding('utf8');

@@ -182,9 +182,9 @@ if (use_clustering) {
                         }
                         else {
                             var options = {
-                                key: fs.readFileSync('server-key.pem'),
-                                cert: fs.readFileSync('server-crt.pem'),
-                                ca: fs.readFileSync('ca-crt.pem')
+                                key: fs.readFileSync(global.server_key_pem),
+                                cert: fs.readFileSync(global.server_crt_pem),
+                                ca: fs.readFileSync(global.ca_crt_pem)
                             };
                             https.globalAgent.maxSockets = 1000000;
                             https.createServer(options, app).listen({port: usecsebaseport, agent: false}, function () {
@@ -232,9 +232,9 @@ else {
                         }
                         else {
                             var options = {
-                                key: fs.readFileSync('server-key.pem'),
-                                cert: fs.readFileSync('server-crt.pem'),
-                                ca: fs.readFileSync('ca-crt.pem')
+                                key: fs.readFileSync(global.server_key_pem),
+                                cert: fs.readFileSync(global.server_crt_pem),
+                                ca: fs.readFileSync(global.ca_crt_pem)
                             };
                             https.globalAgent.maxSockets = 1000000;
                             https.createServer(options, app).listen({port: usecsebaseport, agent: false}, function () {

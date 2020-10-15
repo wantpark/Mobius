@@ -26,6 +26,16 @@ catch (e) {
     //fs.writeFileSync('conf.json', JSON.stringify(conf, null, 4), 'utf8');
 }
 
+global.ca_crt_pem     = 'ca-crt.pem';
+global.server_crt_pem = 'server-crt.pem';
+global.server_key_pem = 'server-key.pem';
+
+var pempath = process.env.PEM || './pem';
+
+global.ca_crt_pem     = pempath + '/' + global.ca_crt_pem;
+global.server_crt_pem = pempath + '/' + global.server_crt_pem;
+global.server_key_pem = pempath + '/' + global.server_key_pem;
+
 global.defaultbodytype      = 'json';
 
 // my CSE information
@@ -34,7 +44,7 @@ global.usecsebase           = 'Mobius';
 global.usecseid             = '/Mobius2';
 global.usecsebaseport       = conf.csebaseport;
 
-global.usedbhost            = process.env?.DB_HOST || 'localhost';
+global.usedbhost            = process.env.DB_HOST || 'localhost';
 global.usedbpass            = conf.dbpass;
 
 
@@ -47,9 +57,9 @@ global.use_hit_man_port     = '7594';
 
 global.usetsagentport       = '7582';
 
-global.use_mqtt_broker      = process.env?.MQTT_HOST || 'localhost'; // mqttbroker for mobius
+global.use_mqtt_broker      = process.env.MQTT_HOST || 'localhost'; // mqttbroker for mobius
 
-global.use_secure           = process.env?.SECURE || 'disable';
+global.use_secure           = process.env.SECURE || 'disable';
 global.use_mqtt_port        = '1883';
 if(use_secure === 'enable') {
     use_mqtt_port           = '8883';

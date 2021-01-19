@@ -665,6 +665,14 @@ function create_action(request, response, callback) {
         });
     }
     else if (ty == '23') {
+        // check proejct name
+        const ri = resource_Obj[rootnm].ri.split('/');
+
+        if (global.project_name !== ri[ri.length - 1]) {
+            callback('403-2');
+            return;
+        }
+
         db_sql.insert_sub(request.connection, resource_Obj[rootnm], function (err, results) {
             if (!err) {
                 var parent_rootnm = Object.keys(request.targetObject)[0];

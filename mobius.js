@@ -82,5 +82,10 @@ global.uservi = '2a';
 
 global.useCert = 'disable';
 
+global.project_id = process.env.PROJECT_ID;
+global.project_name = process.env.PROJECT_NAME;
+global.mqtt_username = process.env.MQTT_USERNAME;
+global.mqtt_password = process.env.MQTT_PASSWORD;
+
 // CSE core
 require('./app');

@@ -38,7 +38,12 @@ var sgn_mqtt_client = null;
 
 if(sgn_mqtt_client == null) {
     if(use_secure === 'disable') {
-        sgn_mqtt_client = mqtt.connect('mqtt://' + use_mqtt_broker + ':' + use_mqtt_port);
+        var connectOptions = {
+            username: `${global.project_id}:${global.mqtt_username}`,
+            password: global.mqtt_password
+        };
+        sgn_mqtt_client = mqtt.connect('mqtt://' + use_mqtt_broker + ':' + use_mqtt_port, connectOptions);
+        //sgn_mqtt_client = mqtt.connect('mqtt://' + use_mqtt_broker + ':' + use_mqtt_port);
     }
     else {
         var connectOptions = {

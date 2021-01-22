@@ -122,8 +122,9 @@ if (use_clustering) {
             cluster.fork();
         });
 
-        db.connect(usedbhost, 3306, 'root', usedbpass, function (rsc) {
-            if (rsc == '1') {
+        //db.connect(usedbhost, 3306, 'root', usedbpass, function (rsc) {
+        db.connect(usedbhost, 3306, usedbuser, usedbpass, function (rsc) {
+                if (rsc == '1') {
                 db.getConnection(function (code, connection) {
                     if (code === '200') {
                         db_sql.set_tuning(connection, function (err, results) {
@@ -164,7 +165,8 @@ if (use_clustering) {
         });
     }
     else {
-        db.connect(usedbhost, 3306, 'root', usedbpass, function (rsc) {
+        //db.connect(usedbhost, 3306, 'root', usedbpass, function (rsc) {
+        db.connect(usedbhost, 3306, usedbuser, usedbpass, function (rsc) {
             if (rsc == '1') {
                 db.getConnection(function (code, connection) {
                     if (code === '200') {
@@ -207,7 +209,8 @@ if (use_clustering) {
     }
 }
 else {
-    db.connect(usedbhost, 3306, 'root', usedbpass, function (rsc) {
+    //db.connect(usedbhost, 3306, 'root', usedbpass, function (rsc) {
+    db.connect(usedbhost, 3306, usedbuser, usedbpass, function (rsc) {
         if (rsc == '1') {
             db.getConnection(function (code, connection) {
                 if (code === '200') {

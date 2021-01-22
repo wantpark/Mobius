@@ -45,8 +45,8 @@ global.usecseid             = '/Mobius2';
 global.usecsebaseport       = conf.csebaseport;
 
 global.usedbhost            = process.env.DB_HOST || 'localhost';
-global.usedbpass            = conf.dbpass;
-
+global.usedbpass            = process.env.MOBIUS_PASSWORD || conf.dbpass;
+global.usedbuser            = process.env.MOBIUS_USERNAME || 'root';
 
 global.usepxywsport         = '7577';
 global.usepxymqttport       = '7578';
@@ -83,9 +83,9 @@ global.uservi = '2a';
 global.useCert = 'disable';
 
 global.project_id = process.env.PROJECT_ID;
-global.project_name = process.env.PROJECT_NAME;
-global.mqtt_username = process.env.MQTT_USERNAME;
-global.mqtt_password = process.env.MQTT_PASSWORD;
+global.project_name = process.env.MOBIUS_NAME;
+global.mqtt_username = process.env.MOBIUS_USERNAME;
+global.mqtt_password = process.env.MOBIUS_PASSWORD;
 
 // CSE core
 require('./app');
